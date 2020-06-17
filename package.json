@@ -1,0 +1,29 @@
+{
+  "name": "snacks-stand-api",
+  "version": "1.0.0",
+  "description": "API GraphQL para consumo pelo app Snacks Stand",
+  "main": "index.js",
+  "scripts": {
+    "start": "ts-node index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/juakacc/snacks-stand-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/juakacc/snacks-stand-api/issues"
+  },
+  "homepage": "https://github.com/juakacc/snacks-stand-api",
+  "dependencies": {
+    "apollo-server": "^2.15.0",
+    "graphql": "^15.1.0"
+  },
+  "devDependencies": {
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.5"
+  }
+}
