@@ -1,16 +1,6 @@
 import { gql, ApolloServer } from "apollo-server";
-
-const typeDefs = gql`
-  type Query {
-    info: String!
-  }
-`;
-
-const resolvers = {
-  Query: {
-    info: () => "Testando API",
-  },
-};
+import typeDefs from "./src/graphql/typedefs";
+import resolvers from "./src/graphql/resolvers";
 
 const server = new ApolloServer({ typeDefs, resolvers });
 server.listen().then(({ url }) => {
