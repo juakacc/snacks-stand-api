@@ -11,13 +11,15 @@ module.exports = (sequelize, DataTypes) => {
       address_id: DataTypes.INTEGER,
       available: DataTypes.BOOLEAN,
     },
-    {}
+    {
+      freezeTableName: true,
+    }
   );
   Store.associate = function (models) {
-    Store.belongsTo(models.User, {
+    Store.belongsTo(models.user, {
       foreignKey: "owner_id",
     });
-    Store.belongsTo(models.Address, {
+    Store.belongsTo(models.address, {
       foreignKey: "address_id",
     });
   };

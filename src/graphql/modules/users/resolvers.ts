@@ -1,17 +1,14 @@
-const users = [
-  {
-    _id: 1,
-    name: "Joaquim",
-  },
-  {
-    _id: 2,
-    name: "Jack",
-  },
-];
+const models = require("../../../models");
 
 export default {
+  User: {
+    address: (parent) => {
+      return models.address.findByPk(parent.address_id);
+    },
+  },
   Query: {
-    teste: () => "Test API",
-    users: () => users,
+    users: () => {
+      return models.user.findAll();
+    },
   },
 };

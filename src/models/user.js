@@ -11,10 +11,12 @@ module.exports = (sequelize, DataTypes) => {
       autoPayment: DataTypes.BOOLEAN,
       address_id: DataTypes.INTEGER,
     },
-    {}
+    {
+      freezeTableName: true,
+    }
   );
   User.associate = function (models) {
-    User.belongsTo(models.Address, {
+    User.belongsTo(models.address, {
       foreignKey: "address_id",
     });
   };

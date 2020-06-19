@@ -1,10 +1,29 @@
 type User {
-  _id: ID!
+  id: ID!
   name: String!
+  phone: String!
+  username: String!
+  password: String!
+  lastAccess: String
+  autoPayment: Boolean
+  address: Address!
+  createdAt: String!
+  updatedAt: String!
+}
+
+type Address {
+  id: ID!
+  street: String!
+  number: Int
+  complement: String
+  district: String!
+  city: String!
+  state: String!
+  createdAt: String!
+  updatedAt: String!
 }
 
 type Query {
-  teste: String!
   users: [User!]!
 }
 

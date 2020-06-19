@@ -9,10 +9,12 @@ module.exports = (sequelize, DataTypes) => {
       new: DataTypes.BOOLEAN,
       store_id: DataTypes.INTEGER,
     },
-    {}
+    {
+      freezeTableName: true,
+    }
   );
   Snack.associate = function (models) {
-    Snack.belongsTo(models.Store, {
+    Snack.belongsTo(models.store, {
       foreignKey: "store_id",
     });
   };

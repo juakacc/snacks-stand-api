@@ -6,13 +6,15 @@ module.exports = (sequelize, DataTypes) => {
       user_id: DataTypes.INTEGER,
       snack_id: DataTypes.INTEGER,
     },
-    {}
+    {
+      freezeTableName: true,
+    }
   );
   Favorite.associate = function (models) {
-    Favorite.belongsTo(models.User, {
+    Favorite.belongsTo(models.user, {
       foreignKey: "user_id",
     });
-    Favorite.belongsTo(models.Snack, {
+    Favorite.belongsTo(models.snack, {
       foreignKey: "snack_id",
     });
   };

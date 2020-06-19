@@ -10,7 +10,9 @@ module.exports = (sequelize, DataTypes) => {
       city: DataTypes.STRING,
       state: DataTypes.STRING,
     },
-    {}
+    {
+      freezeTableName: true,
+    }
   );
   Address.associate = function (models) {};
   return Address;
