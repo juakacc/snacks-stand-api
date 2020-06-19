@@ -1,17 +1,10 @@
+const models = require("../../../models");
+
 export default {
   Store: {
-    owner: () => ({
-      id: 1,
-      name: "Joaquim",
-    }),
+    owner: (parent) => models.user.findByPk(parent.owner_id),
   },
   Query: {
-    stores: () => [
-      {
-        id: 2,
-        name: "Lanches Certo",
-        owner: 1,
-      },
-    ],
+    stores: () => models.store.findAll(),
   },
 };

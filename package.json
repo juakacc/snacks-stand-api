@@ -4,7 +4,7 @@
   "description": "API GraphQL para consumo pelo app Snacks Stand",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.ts"
+    "start": "nodemon index.ts -e js,ts,gql"
   },
   "repository": {
     "type": "git",

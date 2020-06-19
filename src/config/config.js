@@ -11,8 +11,16 @@ module.exports = {
     database: process.env.DB_DATABASE,
     port: process.env.DB_PORT,
     host: "localhost",
-    dialect: "mysql",
     operatorsAliases: 0,
+    dialect: "mysql",
+    dialectOptions: {
+      typeCast: function (field, next) {
+        if (field.type === "DATETIME") {
+          return field.string();
+        }
+        return next();
+      },
+    },
   },
   test: {
     username: "root",

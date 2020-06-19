@@ -11,22 +11,18 @@ type User {
   updatedAt: String!
 }
 
-type Address {
-  id: ID!
-  street: String!
-  number: Int
-  complement: String
-  district: String!
-  city: String!
-  state: String!
-  createdAt: String!
-  updatedAt: String!
-}
-
 type Query {
   users: [User!]!
+  user(id: ID!): User
 }
 
-# type Mutation {
-#   createUser(name: String!): User!
-# }
+type Mutation {
+  createUser(
+    name: String!
+    phone: String!
+    username: String!
+    password: String!
+    autoPayment: Boolean
+    address: AddressInput!
+  ): User!
+}

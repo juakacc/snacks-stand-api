@@ -1,0 +1,20 @@
+type Address {
+  id: ID!
+  street: String!
+  number: Int
+  complement: String
+  district: String!
+  city: String!
+  state: String!
+  createdAt: String!
+  updatedAt: String!
+}
+
+input AddressInput {
+  street: String!
+  number: Int
+  complement: String
+  district: String!
+  city: String!
+  state: String!
+}
