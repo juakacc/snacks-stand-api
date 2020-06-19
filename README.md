@@ -1,6 +1,6 @@
 # Snacks Stand API
 
-API GraphQL para consumo pela plataforma `Snacks Stand`.
+API GraphQL para consumo pela plataforma [Snacks Stand](https://github.com/geovanef46/snacks-stand).
 Está sendo desenvolvida utilizando a metodologia GraphQL para dispor os dados.
 
 ## Executando o projeto
@@ -13,6 +13,10 @@ $ git clone https://github.com/juakacc/snacks-stand-api.git
 $ cd snacks-stand-api
 $ npm i
 ```
+
+Alterar o arquivo `.envExample` para `.env` e modificar com configurações utilizadas localmente.
+
+Para executar as migrações é necessário ter um banco de dados com o mesmo nome que foi definido em `DB_DATABASE`. _Então é preciso criá-lo manualmente._
 
 ```shell
 # Executar as migrations
