@@ -1,3 +1,9 @@
+const dotenv = require("dotenv");
+
+dotenv.config({
+  path: process.env.NODE_ENV === "test" ? ".env.testing" : ".env",
+});
+
 module.exports = {
   development: {
     username: process.env.DB_USERNAME,
@@ -6,7 +12,7 @@ module.exports = {
     port: process.env.DB_PORT,
     host: "localhost",
     dialect: "mysql",
-    operatorsAliases: false,
+    operatorsAliases: 0,
   },
   test: {
     username: "root",
@@ -14,7 +20,7 @@ module.exports = {
     database: "database_test",
     host: "127.0.0.1",
     dialect: "mysql",
-    operatorsAliases: false,
+    operatorsAliases: 0,
   },
   production: {
     username: "root",
@@ -22,6 +28,6 @@ module.exports = {
     database: "database_production",
     host: "127.0.0.1",
     dialect: "mysql",
-    operatorsAliases: false,
+    operatorsAliases: 0,
   },
 };

@@ -4,11 +4,19 @@ module.exports = (sequelize, DataTypes) => {
     "user",
     {
       name: DataTypes.STRING,
+      phone: DataTypes.STRING,
+      username: DataTypes.STRING,
+      password: DataTypes.STRING,
+      lastAccess: DataTypes.DATE,
+      autoPayment: DataTypes.BOOLEAN,
+      address_id: DataTypes.INTEGER,
     },
     {}
   );
   User.associate = function (models) {
-    // associations can be defined here
+    User.belongsTo(models.Address, {
+      foreignKey: "address_id",
+    });
   };
   return User;
 };
