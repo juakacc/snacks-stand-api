@@ -1,9 +1,29 @@
 type Store {
-  _id: ID!
+  id: ID!
   name: String!
+  description: String!
+  phone: String!
+  freeDelivery: Float!
   owner: User!
+  address: Address!
+  available: Boolean!
+  createdAt: String!
+  updatedAt: String!
 }
 
 type Query {
   stores: [Store!]!
+  store(id: ID!): Store!
+}
+
+type Mutation {
+  createStore(
+    name: String!
+    description: String!
+    phone: String!
+    freeDelivery: Float!
+    owner_id: ID!
+    address: AddressInput!
+    available: Boolean
+  ): Store
 }

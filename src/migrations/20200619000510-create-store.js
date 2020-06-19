@@ -20,7 +20,7 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      free_delivery: {
+      freeDelivery: {
         type: Sequelize.DOUBLE,
         allowNull: false,
       },
@@ -43,6 +43,7 @@ module.exports = {
       available: {
         allowNull: false,
         type: Sequelize.BOOLEAN,
+        defaultValue: false,
       },
       createdAt: {
         allowNull: false,
