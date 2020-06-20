@@ -22,6 +22,7 @@ module.exports = {
       },
       new: {
         type: Sequelize.BOOLEAN,
+        defaultValue: true,
       },
       store_id: {
         allowNull: false,

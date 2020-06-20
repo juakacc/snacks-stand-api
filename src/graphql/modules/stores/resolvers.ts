@@ -4,6 +4,12 @@ export default {
   Store: {
     owner: (parent) => models.user.findByPk(parent.owner_id),
     address: (parent) => models.address.findByPk(parent.address_id),
+    snacks: (parent) =>
+      models.snack.findAll({
+        where: {
+          store_id: parent.id,
+        },
+      }),
   },
   Query: {
     stores: () => models.store.findAll(),

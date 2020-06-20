@@ -1,0 +1,25 @@
+type Snack {
+  id: ID!
+  name: String!
+  description: String!
+  price: Float!
+  new: Boolean
+  store: Store!
+  createdAt: String!
+  updateAt: String!
+}
+
+type Query {
+  snacks: [Snack!]!
+  snack(id: ID!): Snack
+}
+
+type Mutation {
+  createSnack(
+    name: String!
+    description: String!
+    price: Float!
+    new: Boolean
+    store_id: ID!
+  ): Snack
+}
