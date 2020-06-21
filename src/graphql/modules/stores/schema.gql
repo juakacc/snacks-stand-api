@@ -8,6 +8,16 @@ type Store {
   address: Address!
   available: Boolean!
   snacks: [Snack!]!
+  classifications: [StoreClassification!]!
+  createdAt: String!
+  updatedAt: String!
+}
+
+type StoreClassification {
+  id: ID!
+  classification: Float!
+  user: User!
+  store: Store!
   createdAt: String!
   updatedAt: String!
 }
@@ -27,4 +37,9 @@ type Mutation {
     address: AddressInput!
     available: Boolean
   ): Store
+  createStoreClassification(
+    store_id: ID!
+    user_id: ID!
+    classification: Float!
+  ): StoreClassification
 }

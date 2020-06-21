@@ -20,11 +20,11 @@ module.exports = {
           key: "id",
         },
       },
-      snack_id: {
+      store_id: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {
-          model: "snack",
+          model: "store",
           key: "id",
         },
       },

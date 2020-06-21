@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       classification: DataTypes.FLOAT,
       user_id: DataTypes.INTEGER,
-      snack_id: DataTypes.INTEGER,
+      store_id: DataTypes.INTEGER,
     },
     {
       freezeTableName: true,
@@ -15,8 +15,8 @@ module.exports = (sequelize, DataTypes) => {
     StoreClassification.belongsTo(models.user, {
       foreignKey: "user_id",
     });
-    StoreClassification.belongsTo(models.snack, {
-      foreignKey: "snack_id",
+    StoreClassification.belongsTo(models.store, {
+      foreignKey: "store_id",
     });
   };
   return StoreClassification;

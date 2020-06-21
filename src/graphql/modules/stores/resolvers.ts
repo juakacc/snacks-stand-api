@@ -4,12 +4,22 @@ export default {
   Store: {
     owner: (parent) => models.user.findByPk(parent.owner_id),
     address: (parent) => models.address.findByPk(parent.address_id),
+    classifications: (parent) =>
+      models.store_classification.findAll({
+        where: {
+          store_id: parent.id,
+        },
+      }),
     snacks: (parent) =>
       models.snack.findAll({
         where: {
           store_id: parent.id,
         },
       }),
+  },
+  StoreClassification: {
+    user: (parent) => models.user.findByPk(parent.user_id),
+    store: (parent) => models.store.findByPk(parent.store_id),
   },
   Query: {
     stores: () => models.store.findAll(),
@@ -37,6 +47,9 @@ export default {
         })
         .then((result) => result)
         .catch((err) => err);
+    },
+    createStoreClassification: (_, args) => {
+      return models.store_classification.create(args);
     },
   },
 };

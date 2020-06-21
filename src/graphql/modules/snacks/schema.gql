@@ -5,6 +5,16 @@ type Snack {
   price: Float!
   new: Boolean
   store: Store!
+  comments: [SnackComment!]!
+  createdAt: String!
+  updateAt: String!
+}
+
+type SnackComment {
+  id: ID!
+  comment: String!
+  user: User!
+  snack: Snack!
   createdAt: String!
   updateAt: String!
 }
@@ -22,4 +32,9 @@ type Mutation {
     new: Boolean
     store_id: ID!
   ): Snack
+  createSnackComment(
+    snack_id: ID!
+    user_id: ID!
+    comment: String!
+  ): SnackComment
 }
