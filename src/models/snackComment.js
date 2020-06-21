@@ -12,10 +12,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
   SnackComment.associate = function (models) {
-    Favorite.belongsTo(models.user, {
+    SnackComment.belongsTo(models.user, {
       foreignKey: "user_id",
     });
-    Favorite.belongsTo(models.snack, {
+    SnackComment.belongsTo(models.snack, {
       foreignKey: "snack_id",
     });
   };
