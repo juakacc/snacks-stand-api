@@ -2,6 +2,18 @@ const models = require("../../../models");
 
 export default {
   User: {
+    favorites: async (parent) => {
+      const favorites = await models.favorite.findAll({
+        where: {
+          user_id: parent.id,
+        },
+        include: [models.snack],
+      });
+      const result = favorites.map(
+        (favorite) => favorite.dataValues.snack.dataValues
+      );
+      return result;
+    },
     address: (parent) => {
       return models.address.findByPk(parent.address_id);
     },
@@ -31,6 +43,28 @@ export default {
         })
         .then((result) => result)
         .catch((err) => err);
+    },
+    addFavorite: (_, args) => {
+      const { user_id, snack_id } = args;
+      return models.favorite
+        .create({
+          user_id,
+          snack_id,
+        })
+        .then(() => true)
+        .catch(() => false);
+    },
+    removeFavorite: async (_, args) => {
+      const { user_id, snack_id } = args;
+      return models.favorite
+        .destroy({
+          where: {
+            user_id,
+            snack_id,
+          },
+        })
+        .then(() => true)
+        .catch(() => false);
     },
   },
 };

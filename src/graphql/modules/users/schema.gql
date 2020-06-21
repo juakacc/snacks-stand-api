@@ -7,6 +7,7 @@ type User {
   lastAccess: String
   autoPayment: Boolean
   address: Address!
+  favorites: [Snack!]!
   createdAt: String!
   updatedAt: String!
 }
@@ -25,4 +26,6 @@ type Mutation {
     autoPayment: Boolean
     address: AddressInput!
   ): User
+  addFavorite(user_id: ID!, snack_id: ID!): Boolean!
+  removeFavorite(user_id: ID!, snack_id: ID!): Boolean!
 }
