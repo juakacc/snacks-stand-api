@@ -1,4 +1,5 @@
 const models = require("../../../models");
+const bcrypt = require("bcryptjs");
 
 export default {
   User: {
@@ -28,7 +29,8 @@ export default {
   },
   Mutation: {
     createUser: async (_, args) => {
-      const { address } = args;
+      const { address, password } = args;
+      const hashedPassword = await bcrypt.hash(password, 10);
 
       return models.sequelize
         .transaction((t) => {
@@ -36,7 +38,11 @@ export default {
             .create(address, { transaction: t })
             .then((addressCreated) => {
               return models.user.create(
-                { ...args, address_id: addressCreated.id },
+                {
+                  ...args,
+                  password: hashedPassword,
+                  address_id: addressCreated.id,
+                },
                 { transaction: t }
               );
             });
