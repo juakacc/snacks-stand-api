@@ -28,4 +28,10 @@ type Mutation {
   ): User
   addFavorite(user_id: ID!, snack_id: ID!): Boolean!
   removeFavorite(user_id: ID!, snack_id: ID!): Boolean!
+  login(username: String!, password: String!): AuthPayload
+}
+
+type AuthPayload {
+  token: String!
+  user: User!
 }

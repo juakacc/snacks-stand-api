@@ -1,5 +1,7 @@
-const models = require("../../../models");
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+
+const models = require("../../../models");
 
 module.exports = {
   User: {
@@ -49,6 +51,27 @@ module.exports = {
         })
         .then((result) => result)
         .catch((err) => err);
+    },
+    login: async (_, args) => {
+      const { username, password } = args;
+
+      const user = await models.user.findOne({
+        where: {
+          username,
+        },
+      });
+
+      if (!user) throw new Error("User not found");
+
+      const valid = await bcrypt.compare(password, user.password);
+      if (!valid) throw new Error("Invalid password");
+
+      const token = jwt.sign({ userId: user.id }, process.env.APP_SECRET);
+
+      return {
+        token,
+        user,
+      };
     },
     addFavorite: (_, args) => {
       const { user_id, snack_id } = args;
