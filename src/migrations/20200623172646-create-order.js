@@ -11,10 +11,6 @@ module.exports = {
       note: {
         type: Sequelize.STRING,
       },
-      value: {
-        allowNull: false,
-        type: Sequelize.DOUBLE,
-      },
       status: {
         allowNull: false,
         type: Sequelize.STRING,
