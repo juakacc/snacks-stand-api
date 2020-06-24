@@ -59,6 +59,40 @@ module.exports = {
         .then((result) => result)
         .catch((err) => err);
     },
+    updateUser: async (_, args) => {
+      const { user_id, address_id, address } = args;
+
+      const user = await models.user.findByPk(user_id);
+
+      return models.sequelize
+        .transaction((t) => {
+          return models.address
+            .update(
+              address,
+              {
+                where: {
+                  id: user.address_id,
+                },
+              },
+              { transaction: t }
+            )
+            .then(() => {
+              return models.user.update(
+                {
+                  ...args,
+                },
+                {
+                  where: {
+                    id: user_id,
+                  },
+                },
+                { transaction: t }
+              );
+            });
+        })
+        .then(() => models.user.findByPk(user_id))
+        .catch((err) => err);
+    },
     login: async (_, args) => {
       const { username, password } = args;
 

@@ -18,12 +18,29 @@ type Query {
   user(id: ID!): User
 }
 
+input UserInput {
+  name: String!
+  phone: String!
+  username: String!
+  password: String!
+  autoPayment: Boolean
+  address: AddressInput!
+}
+
 type Mutation {
   createUser(
     name: String!
     phone: String!
     username: String!
     password: String!
+    autoPayment: Boolean
+    address: AddressInput!
+  ): User
+  updateUser(
+    user_id: ID!
+    name: String!
+    phone: String!
+    username: String!
     autoPayment: Boolean
     address: AddressInput!
   ): User
