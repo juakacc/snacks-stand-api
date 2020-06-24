@@ -1,4 +1,6 @@
 const models = require("../../../models");
+const Sequelize = require("sequelize");
+const Op = Sequelize.Op;
 
 module.exports = {
   Snack: {
@@ -18,6 +20,23 @@ module.exports = {
   Query: {
     snacks: () => models.snack.findAll(),
     snack: (_, args) => models.snack.findByPk(args.id),
+    searchSnack: (_, args) =>
+      models.snack.findAll({
+        where: {
+          [Op.or]: [
+            {
+              name: {
+                [Op.like]: `%${args.key}%`,
+              },
+            },
+            {
+              description: {
+                [Op.like]: `%${args.key}%`,
+              },
+            },
+          ],
+        },
+      }),
   },
   Mutation: {
     createSnack: (_, args) => {

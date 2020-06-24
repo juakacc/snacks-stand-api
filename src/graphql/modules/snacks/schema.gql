@@ -22,6 +22,7 @@ type SnackComment {
 type Query {
   snacks: [Snack!]!
   snack(id: ID!): Snack
+  searchSnack(key: String!): [Snack!]!
 }
 
 type Mutation {
