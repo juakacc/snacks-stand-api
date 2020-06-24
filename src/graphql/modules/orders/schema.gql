@@ -29,6 +29,7 @@ type OrderItem {
 
 type Query {
   orders: [Order!]!
+  order(id: ID!): Order
 }
 
 input ItemInput {

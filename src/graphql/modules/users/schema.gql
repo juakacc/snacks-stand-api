@@ -8,6 +8,7 @@ type User {
   autoPayment: Boolean
   address: Address!
   favorites: [Snack!]!
+  orders: [Order!]!
   createdAt: String!
   updatedAt: String!
 }

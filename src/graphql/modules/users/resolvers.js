@@ -5,6 +5,13 @@ const models = require("../../../models");
 
 module.exports = {
   User: {
+    orders: (parent) => {
+      return models.order.findAll({
+        where: {
+          client_id: parent.id,
+        },
+      });
+    },
     favorites: async (parent) => {
       const favorites = await models.favorite.findAll({
         where: {

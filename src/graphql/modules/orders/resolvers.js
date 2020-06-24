@@ -26,6 +26,7 @@ module.exports = {
   },
   Query: {
     orders: () => models.order.findAll(),
+    order: (_, args) => models.order.findByPk(args.id),
   },
   Mutation: {
     createOrder: (_, args) => {
