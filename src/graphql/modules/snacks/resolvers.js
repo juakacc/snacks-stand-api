@@ -1,6 +1,6 @@
 const models = require("../../../models");
 
-export default {
+module.exports = {
   Snack: {
     store: (parent) => models.store.findByPk(parent.store_id),
     comments: (parent) => {

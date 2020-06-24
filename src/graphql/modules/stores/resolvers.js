@@ -1,6 +1,6 @@
 const models = require("../../../models");
 
-export default {
+module.exports = {
   Store: {
     owner: (parent) => models.user.findByPk(parent.owner_id),
     address: (parent) => models.address.findByPk(parent.address_id),
@@ -10,12 +10,19 @@ export default {
           store_id: parent.id,
         },
       }),
-    snacks: (parent) =>
-      models.snack.findAll({
-        where: {
-          store_id: parent.id,
-        },
-      }),
+    snacks: async (parent) => {
+      const aux = await models.store.findByPk(parent.id);
+      const aux2 = await aux.getSnacks();
+      // console.log(aux2);
+
+      // const s = await models.snack.findAll({
+      //   where: {
+      //     store_id: parent.id,
+      //   },
+      // });
+
+      return aux2;
+    },
   },
   StoreClassification: {
     user: (parent) => models.user.findByPk(parent.user_id),

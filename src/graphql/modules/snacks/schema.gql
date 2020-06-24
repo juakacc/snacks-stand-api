@@ -7,7 +7,7 @@ type Snack {
   store: Store!
   comments: [SnackComment!]!
   createdAt: String!
-  updateAt: String!
+  updatedAt: String!
 }
 
 type SnackComment {
@@ -16,7 +16,7 @@ type SnackComment {
   user: User!
   snack: Snack!
   createdAt: String!
-  updateAt: String!
+  updatedAt: String!
 }
 
 type Query {

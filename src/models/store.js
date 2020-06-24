@@ -22,6 +22,10 @@ module.exports = (sequelize, DataTypes) => {
     Store.belongsTo(models.address, {
       foreignKey: "address_id",
     });
+    Store.hasMany(models.snack, {
+      foreignKey: "store_id",
+      as: "Snacks",
+    });
   };
   return Store;
 };

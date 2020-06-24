@@ -1,0 +1,42 @@
+type Order {
+  id: ID!
+  client: User!
+  store: Store!
+  note: String
+  value: Float!
+  status: String!
+  items: [OrderItem!]!
+  createdAt: String!
+  updatedAt: String!
+}
+
+type OrderItem {
+  id: ID!
+  amount: Int!
+  value: Float!
+  snack: Snack!
+  order: Order!
+  createdAt: String!
+  updatedAt: String!
+}
+
+type Query {
+  orders: [Order!]!
+}
+
+input ItemInput {
+  amount: Int!
+  value: Float!
+  snack_id: ID!
+}
+
+type Mutation {
+  createOrder(
+    client_id: ID!
+    store_id: ID!
+    note: String
+    value: Float
+    status: String
+    items: [ItemInput!]!
+  ): Order
+}

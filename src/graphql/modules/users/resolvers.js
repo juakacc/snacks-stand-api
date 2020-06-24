@@ -1,7 +1,7 @@
 const models = require("../../../models");
 const bcrypt = require("bcryptjs");
 
-export default {
+module.exports = {
   User: {
     favorites: async (parent) => {
       const favorites = await models.favorite.findAll({
