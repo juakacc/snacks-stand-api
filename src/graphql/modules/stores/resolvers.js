@@ -1,4 +1,6 @@
 const models = require("../../../models");
+const Sequelize = require("sequelize");
+const Op = Sequelize.Op;
 
 module.exports = {
   Store: {
@@ -33,6 +35,23 @@ module.exports = {
     store: (_, args) => {
       return models.store.findByPk(args.id);
     },
+    searchStore: (_, args) =>
+      models.store.findAll({
+        where: {
+          [Op.or]: [
+            {
+              name: {
+                [Op.like]: `%${args.key}%`,
+              },
+            },
+            {
+              description: {
+                [Op.like]: `%${args.key}%`,
+              },
+            },
+          ],
+        },
+      }),
   },
   Mutation: {
     createStore: (_, args) => {

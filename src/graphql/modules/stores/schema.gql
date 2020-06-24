@@ -25,6 +25,7 @@ type StoreClassification {
 type Query {
   stores: [Store!]!
   store(id: ID!): Store!
+  searchStore(key: String!): [Store!]!
 }
 
 type Mutation {
