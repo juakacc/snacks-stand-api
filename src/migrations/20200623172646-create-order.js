@@ -14,7 +14,7 @@ module.exports = {
       status: {
         allowNull: false,
         type: Sequelize.STRING,
-        defaultValue: "PENDENTE",
+        defaultValue: "PENDING",
       },
       client_id: {
         allowNull: false,

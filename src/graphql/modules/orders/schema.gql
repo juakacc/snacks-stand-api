@@ -3,11 +3,18 @@ type Order {
   client: User!
   store: Store!
   note: String
-  value: Float!
-  status: String!
+  value: Float
+  status: Status!
   items: [OrderItem!]!
   createdAt: String!
   updatedAt: String!
+}
+# Verify most
+enum Status {
+  PENDING
+  TRANSPORT
+  FINISHED
+  CANCELED
 }
 
 type OrderItem {
@@ -35,7 +42,6 @@ type Mutation {
     client_id: ID!
     store_id: ID!
     note: String
-    value: Float
     status: String
     items: [ItemInput!]!
   ): Order
