@@ -114,8 +114,18 @@ module.exports = {
         user,
       };
     },
-    addFavorite: (_, args) => {
+    addFavorite: async (_, args) => {
       const { user_id, snack_id } = args;
+
+      const favorite = await models.favorite.findOne({
+        where: {
+          user_id,
+          snack_id,
+        },
+      });
+
+      if (favorite) return true;
+
       return models.favorite
         .create({
           user_id,
