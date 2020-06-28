@@ -9,6 +9,8 @@ type Store {
   available: Boolean!
   snacks: [Snack!]!
   classifications: [StoreClassification!]!
+  classification: Float!
+  news: [Snack!]!
   createdAt: String!
   updatedAt: String!
 }

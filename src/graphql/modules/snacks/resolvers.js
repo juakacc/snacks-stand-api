@@ -37,6 +37,30 @@ module.exports = {
           ],
         },
       }),
+    getNewSnacks: (_, args) => {
+      const { store_id } = args;
+
+      if (store_id) {
+        return models.snack.findAll({
+          where: {
+            [Op.and]: [
+              {
+                store_id,
+              },
+              {
+                new: true,
+              },
+            ],
+          },
+        });
+      } else {
+        return models.snack.findAll({
+          where: {
+            new: true,
+          },
+        });
+      }
+    },
   },
   Mutation: {
     createSnack: (_, args) => {

@@ -31,9 +31,14 @@ $ npm start
 
 _Ao final espera-se que o servidor esteja em execução no endereço: http://localhost:4000_
 
-## Tecnologias sendo utilizadas
+## Tecnologias utilizadas
 
 - GraphQL;
 - Apollo Server;
 - Sequelize;
 - Mysql;
+
+## Contribuidores
+
+- [Geovane Fernandes](https://github.com/geovanef46)
+- [Joaquim Aníbal](https://github.com/juakacc)

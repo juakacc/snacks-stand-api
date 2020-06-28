@@ -12,18 +12,44 @@ module.exports = {
           store_id: parent.id,
         },
       }),
+    classification: async (parent) => {
+      const count = await models.store_classification.count({
+        where: {
+          store_id: parent.id,
+        },
+      });
+
+      if (count > 0) {
+        const sum = await models.store_classification.sum("classification", {
+          where: {
+            store_id: parent.id,
+          },
+        });
+        return sum / count;
+      } else {
+        return 0;
+      }
+    },
     snacks: async (parent) => {
-      const aux = await models.store.findByPk(parent.id);
-      const aux2 = await aux.getSnacks();
-      // console.log(aux2);
-
-      // const s = await models.snack.findAll({
-      //   where: {
-      //     store_id: parent.id,
-      //   },
-      // });
-
-      return aux2;
+      return models.snack.findAll({
+        where: {
+          store_id: parent.id,
+        },
+      });
+    },
+    news: (parent) => {
+      return models.snack.findAll({
+        where: {
+          [Op.and]: [
+            {
+              store_id: parent.id,
+            },
+            {
+              new: true,
+            },
+          ],
+        },
+      });
     },
   },
   StoreClassification: {
@@ -74,8 +100,29 @@ module.exports = {
         .then((result) => result)
         .catch((err) => err);
     },
-    createStoreClassification: (_, args) => {
-      return models.store_classification.create(args);
+    createStoreClassification: async (_, args) => {
+      const { store_id, user_id } = args;
+
+      const classification = await models.store_classification.findOne({
+        where: {
+          store_id,
+          user_id,
+        },
+      });
+
+      if (classification) {
+        return models.store_classification
+          .update(args, {
+            where: {
+              id: classification.id,
+            },
+          })
+          .then(() => {
+            return models.store_classification.findByPk(classification.id);
+          });
+      } else {
+        return models.store_classification.create(args);
+      }
     },
   },
 };
