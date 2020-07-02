@@ -13,6 +13,8 @@ type Store {
   news: [Snack!]!
   createdAt: String!
   updatedAt: String!
+  latitude: Float
+  longitude: Float
 }
 
 type StoreClassification {
@@ -39,6 +41,8 @@ type Mutation {
     owner_id: ID!
     address: AddressInput!
     available: Boolean
+    latitude: Float
+    longitude: Float
   ): Store
   createStoreClassification(
     store_id: ID!

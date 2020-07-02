@@ -10,6 +10,8 @@ module.exports = (sequelize, DataTypes) => {
       owner_id: DataTypes.INTEGER,
       address_id: DataTypes.INTEGER,
       available: DataTypes.BOOLEAN,
+      latitude: DataTypes.DOUBLE,
+      longitude: DataTypes.DOUBLE,
     },
     {
       freezeTableName: true,
