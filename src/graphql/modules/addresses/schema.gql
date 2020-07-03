@@ -6,6 +6,8 @@ type Address {
   district: String!
   city: String!
   state: String!
+  latitude: Float
+  longitude: Float
   createdAt: String!
   updatedAt: String!
 }
@@ -17,4 +19,6 @@ input AddressInput {
   district: String!
   city: String!
   state: String!
+  latitude: Float
+  longitude: Float
 }

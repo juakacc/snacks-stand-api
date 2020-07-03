@@ -55,15 +55,6 @@ module.exports = {
         type: Sequelize.DATE,
         defaultValue: Sequelize.fn("NOW"),
       },
-      latitude: {
-        allowNull: false,
-        type: Sequelize.INTEGER,
-
-      },
-      longitude: {
-        allowNull: false,
-        type: Sequelize.DOUBLE,
-      },
     });
   },
   down: (queryInterface, Sequelize) => {

@@ -9,6 +9,8 @@ module.exports = (sequelize, DataTypes) => {
       district: DataTypes.STRING,
       city: DataTypes.STRING,
       state: DataTypes.STRING,
+      latitude: DataTypes.DOUBLE,
+      longitude: DataTypes.DOUBLE,
     },
     {
       freezeTableName: true,
