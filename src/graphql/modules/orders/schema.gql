@@ -40,7 +40,6 @@ input ItemInput {
 
 type Mutation {
   createOrder(
-    client_id: ID!
     store_id: ID!
     note: String
     status: String

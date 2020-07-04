@@ -2,6 +2,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 const models = require("../../../models");
+const { getUserId } = require("../../../utils");
 
 module.exports = {
   User: {
@@ -59,8 +60,9 @@ module.exports = {
         .then((result) => result)
         .catch((err) => err);
     },
-    updateUser: async (_, args) => {
-      const { user_id, address_id, address } = args;
+    updateUser: async (_, args, context) => {
+      const user_id = getUserId(context);
+      const { address_id, address } = args;
 
       const user = await models.user.findByPk(user_id);
 
@@ -114,8 +116,9 @@ module.exports = {
         user,
       };
     },
-    addFavorite: async (_, args) => {
-      const { user_id, snack_id } = args;
+    addFavorite: async (_, args, context) => {
+      const user_id = getUserId(context);
+      const { snack_id } = args;
 
       const favorite = await models.favorite.findOne({
         where: {
@@ -134,8 +137,10 @@ module.exports = {
         .then(() => true)
         .catch(() => false);
     },
-    removeFavorite: async (_, args) => {
-      const { user_id, snack_id } = args;
+    removeFavorite: async (_, args, context) => {
+      const user_id = getUserId(context);
+      const { snack_id } = args;
+
       return models.favorite
         .destroy({
           where: {

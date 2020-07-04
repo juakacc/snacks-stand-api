@@ -37,15 +37,14 @@ type Mutation {
     address: AddressInput!
   ): User
   updateUser(
-    user_id: ID!
     name: String!
     phone: String!
     username: String!
     autoPayment: Boolean
     address: AddressInput!
   ): User
-  addFavorite(user_id: ID!, snack_id: ID!): Boolean!
-  removeFavorite(user_id: ID!, snack_id: ID!): Boolean!
+  addFavorite(snack_id: ID!): Boolean!
+  removeFavorite(snack_id: ID!): Boolean!
   login(username: String!, password: String!): AuthPayload
 }
 

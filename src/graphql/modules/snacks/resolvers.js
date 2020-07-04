@@ -1,6 +1,8 @@
-const models = require("../../../models");
 const Sequelize = require("sequelize");
 const Op = Sequelize.Op;
+
+const models = require("../../../models");
+const { getUserId } = require("../../../utils");
 
 module.exports = {
   Snack: {
@@ -63,10 +65,12 @@ module.exports = {
     },
   },
   Mutation: {
-    createSnack: (_, args) => {
+    createSnack: (_, args, context) => {
+      const userId = getUserId(context);
       return models.snack.create(args);
     },
     createSnackComment: (_, args) => {
+      const userId = getUserId(context);
       return models.snack_comment.create(args);
     },
   },

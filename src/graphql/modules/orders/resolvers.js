@@ -1,4 +1,5 @@
 const models = require("../../../models");
+const { getUserId } = require("../../../utils");
 
 module.exports = {
   Order: {
@@ -25,12 +26,24 @@ module.exports = {
     },
   },
   Query: {
-    orders: () => models.order.findAll(),
-    order: (_, args) => models.order.findByPk(args.id),
+    orders: (parent, args, context) => {
+      const client_id = getUserId(context);
+      return models.order.findAll({
+        where: {
+          client_id,
+        },
+      });
+    },
+    order: (parent, args, context) => {
+      const client_id = getUserId(context);
+      // retornar apenas se pertencer ao cliente que requisitou
+      return models.order.findByPk(args.id);
+    },
   },
   Mutation: {
-    createOrder: (_, args) => {
-      const { note, status, client_id, store_id, items } = args;
+    createOrder: (_, args, context) => {
+      const client_id = getUserId(context);
+      const { note, status, store_id, items } = args;
 
       return models.sequelize
         .transaction((t) => {
