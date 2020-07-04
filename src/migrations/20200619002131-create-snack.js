@@ -24,6 +24,11 @@ module.exports = {
         type: Sequelize.BOOLEAN,
         defaultValue: true,
       },
+      sales: {
+        allowNull: true,
+        type: Sequelize.INTEGER,
+        defaultValue: 0,
+      },
       store_id: {
         allowNull: false,
         type: Sequelize.INTEGER,

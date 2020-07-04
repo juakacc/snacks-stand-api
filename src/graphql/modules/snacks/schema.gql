@@ -4,6 +4,7 @@ type Snack {
   description: String!
   price: Float!
   new: Boolean
+  sales: Int!
   store: Store!
   comments: [SnackComment!]!
   createdAt: String!
