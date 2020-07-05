@@ -1,39 +1,34 @@
 "use strict";
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable("snack", {
+    return queryInterface.createTable("credit_card", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      name: {
+      number: {
         allowNull: false,
         type: Sequelize.STRING,
       },
-      description: {
+      nameOwner: {
         allowNull: false,
-        type: Sequelize.TEXT,
+        type: Sequelize.STRING,
       },
-      price: {
+      validate: {
         allowNull: false,
-        type: Sequelize.DOUBLE,
+        type: Sequelize.DATE,
       },
-      new: {
-        type: Sequelize.BOOLEAN,
-        defaultValue: true,
+      securityCode: {
+        allowNull: false,
+        type: Sequelize.STRING,
       },
-      sales: {
-        allowNull: true,
-        type: Sequelize.INTEGER,
-        defaultValue: 0,
-      },
-      store_id: {
+      user_id: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {
-          model: "store",
+          model: "user",
           key: "id",
         },
         onUpdate: "CASCADE",
@@ -52,6 +47,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable("snack");
+    return queryInterface.dropTable("credit_card");
   },
 };

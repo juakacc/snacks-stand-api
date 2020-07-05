@@ -19,6 +19,8 @@ module.exports = {
           model: "user",
           key: "id",
         },
+        onUpdate: "CASCADE",
+        onDelete: "CASCADE",
       },
       snack_id: {
         allowNull: false,
@@ -27,6 +29,8 @@ module.exports = {
           model: "snack",
           key: "id",
         },
+        onUpdate: "CASCADE",
+        onDelete: "CASCADE",
       },
       createdAt: {
         allowNull: false,

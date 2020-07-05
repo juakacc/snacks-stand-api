@@ -32,6 +32,8 @@ module.exports = {
           model: "order",
           key: "id",
         },
+        onUpdate: "CASCADE",
+        onDelete: "CASCADE",
       },
       createdAt: {
         allowNull: false,
