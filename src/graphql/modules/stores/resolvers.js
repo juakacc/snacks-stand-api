@@ -1,6 +1,7 @@
-const models = require("../../../models");
 const Sequelize = require("sequelize");
 const Op = Sequelize.Op;
+
+const models = require("../../../models");
 
 module.exports = {
   Store: {
@@ -49,6 +50,14 @@ module.exports = {
             },
           ],
         },
+      });
+    },
+    moreSales: (parent) => {
+      return models.snack.findAll({
+        where: {
+          store_id: parent.id,
+        },
+        order: [["sales", "DESC"]],
       });
     },
   },

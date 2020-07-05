@@ -31,6 +31,12 @@ $ npm start
 
 _Ao final espera-se que o servidor esteja em execução no endereço: http://localhost:4000_
 
+Algumas mutations/queries necessitam de autenticação, então não se esqueça de informar seu `jwt`:
+
+```
+"authorization": "Bearer seu_token"
+```
+
 ## Tecnologias utilizadas
 
 - GraphQL;

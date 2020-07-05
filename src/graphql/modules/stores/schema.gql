@@ -11,6 +11,7 @@ type Store {
   classifications: [StoreClassification!]!
   classification: Float!
   news: [Snack!]!
+  moreSales: [Snack!]!
   createdAt: String!
   updatedAt: String!
 }
