@@ -13,7 +13,8 @@ module.exports = {
         },
       });
     },
-    favorites: async (parent) => {
+    favorites: async (parent, _, context) => {
+      const userId = getUserId(context);
       const favorites = await models.favorite.findAll({
         where: {
           user_id: parent.id,
@@ -24,6 +25,13 @@ module.exports = {
         (favorite) => favorite.dataValues.snack.dataValues
       );
       return result;
+    },
+    creditCards: async (parent) => {
+      return models.credit_card.findAll({
+        where: {
+          user_id: parent.id,
+        },
+      });
     },
     address: (parent) => {
       return models.address.findByPk(parent.address_id);
@@ -149,6 +157,32 @@ module.exports = {
           },
         })
         .then(() => true)
+        .catch(() => false);
+    },
+    addCreditCart: (_, args, context) => {
+      const user_id = getUserId(context);
+      const { number, nameOwner, validateDate, securityCode } = args;
+
+      return models.credit_card.create({
+        number,
+        nameOwner,
+        validateDate,
+        securityCode,
+        user_id,
+      });
+    },
+    removeCreditCard: (_, args, context) => {
+      const user_id = getUserId(context);
+      const { id } = args;
+
+      return models.credit_card
+        .destroy({
+          where: {
+            id,
+            user_id,
+          },
+        })
+        .then((a) => a > 0)
         .catch(() => false);
     },
   },

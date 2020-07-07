@@ -3,12 +3,20 @@ module.exports = (sequelize, DataTypes) => {
   const CreditCard = sequelize.define(
     "credit_card",
     {
-      name: DataTypes.STRING,
+      number: DataTypes.STRING,
+      nameOwner: DataTypes.STRING,
+      validateDate: DataTypes.DATE,
+      securityCode: DataTypes.STRING,
+      user_id: DataTypes.INTEGER,
     },
-    {}
+    {
+      freezeTableName: true,
+    }
   );
   CreditCard.associate = function (models) {
-    // associations can be defined here
+    CreditCard.belongsTo(models.user, {
+      foreignKey: "user_id",
+    });
   };
   return CreditCard;
 };

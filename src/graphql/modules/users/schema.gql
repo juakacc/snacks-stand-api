@@ -9,6 +9,18 @@ type User {
   address: Address!
   favorites: [Snack!]!
   orders: [Order!]!
+  creditCards: [CreditCard!]!
+  createdAt: String!
+  updatedAt: String!
+}
+
+type CreditCard {
+  id: ID!
+  number: String!
+  nameOwer: String!
+  validateDate: String!
+  securityCode: String!
+  user: User!
   createdAt: String!
   updatedAt: String!
 }
@@ -45,6 +57,13 @@ type Mutation {
   ): User
   addFavorite(snack_id: ID!): Boolean!
   removeFavorite(snack_id: ID!): Boolean!
+  addCreditCart(
+    number: String!
+    nameOwner: String!
+    validateDate: String!
+    securityCode: String!
+  ): CreditCard
+  removeCreditCard(id: ID!): Boolean!
   login(username: String!, password: String!): AuthPayload
 }
 

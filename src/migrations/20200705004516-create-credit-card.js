@@ -16,7 +16,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING,
       },
-      validate: {
+      validateDate: {
         allowNull: false,
         type: Sequelize.DATE,
       },
