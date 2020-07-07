@@ -17,7 +17,7 @@ type User {
 type CreditCard {
   id: ID!
   number: String!
-  nameOwer: String!
+  nameOwner: String!
   validateDate: String!
   securityCode: String!
   user: User!
